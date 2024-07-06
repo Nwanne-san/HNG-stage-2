@@ -1,3 +1,5 @@
+
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,10 +9,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        pink: "#6D1E6D",
+        neutral: "#F5F5F5",
+        secondary: "#E4B363",
+        gray: '#333333'
+      },
+      fontFamily: {
+        playfair: ["Playfair_Display",'serif'],
+        lato: ["Lato", 'sans-serif']
       },
     },
   },
