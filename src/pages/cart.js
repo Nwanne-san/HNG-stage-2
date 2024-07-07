@@ -46,27 +46,27 @@ const CartPage = () => {
   return (
     <>
     <Navbar/>
-    <div className="container mx-auto">
+    <div className="container bg-[#F5F5F5] mx-auto">
       
       <div className="px-6">
         <h1 className={`flex justify-center text-2xl font-bold mb-4 ${playfair.className}`}>Your Cart</h1>
-        <div className="flex flex-row">
-          <div className="flex flex-col-reverse gap-[96px]">
+        <div className="flex flex-row gap-[72px] justify-between ">
+          <div className="flex px-11 flex-col-reverse gap-[96px] bg-[#FFFFFF]">
             {productItems.slice(0,2).map((product) => (
-              <div key={product.id} className="flex">
+              <div key={product.id} className="flex gap-8">
                 <img
                 src={product.imgSrc}
-                className="object-cover w-[447px] h-[363px]"
+                className="object-cover w-[447px] h-[363px] rounded-2xl"
                 />
                 <div className="flex flex-col gap-6">
                   <div  className={`${lato.className}`}>
-                    <h1 className={`${playfair.className}`}>{product.name}</h1>
-                    <p><span className={`${playfair.className}`}>Description</span>: These elegant stud earrings feature rare gemstones, meticulously crafted to add a touch of sophistication to any outfit. Perfect for both casual and formal occasions.</p>
+                    <h2 className={`${playfair.className} text-pink text-[28px] font-semibold`}>{product.name}</h2>
+                    <p className="text-[18px]"><span className={`${playfair.className} text-[20px] font-medium`}>Description</span>: These elegant stud earrings feature rare gemstones, meticulously crafted to add a touch of sophistication to any outfit. Perfect for both casual and formal occasions.</p>
                   </div>
                   <div>
 
                   </div>
-                  <button  className={`${lato.className}`}>Remove from cart</button>
+                  <button  className={`px-[18.5px] py-2 border border-secondary rounded-xl hover:text-white hover:bg-secondary duration-200 ${lato.className}`}>Remove from cart</button>
                 </div>
               </div>
               
@@ -74,9 +74,25 @@ const CartPage = () => {
             <div>
               
             </div>
+
           </div>
           <aside>
-
+              <div className={`${lato.className} flex flex-col gap-12 bg-[#FFFFFF] px-[28px] py-[59px]`}>
+                <div className="flex flex-col gap-[72px]">
+                    <div>
+                      <h3 className={`${playfair.className} text-pink text-[20px] font-medium `}>Enter Promo Code</h3>
+                      <div className="flex gap-2">
+                        <input
+                        type="search"
+                        placeholder="Promo code"
+                        className="px-3 py-2 flex justify-start border border-[#D0D5DD] rounded-xl text-neutral text-[14px]"
+                        />
+                        <button className="px-[34px] py-[9.5px] bg-pink rounded-xl text-neutral text-[14px]">Apply</button>
+                      </div>
+                    </div>
+                </div>
+                <button onClick={handleCheckout} className="py-3 px-[15px] text-neutral bg-pink rounded-xl">Proceed to Checkout</button>
+              </div>
           </aside>
         </div>
       </div>
