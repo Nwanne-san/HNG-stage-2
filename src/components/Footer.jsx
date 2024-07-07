@@ -7,11 +7,11 @@ export default function Footer() {
   return (
     <>
       <div className={`w-full bg-pink text-neutral flex flex-col py-4 px-8 gap-6 ${lato.className}`}>
-        <div>
-          <p className={`lowercase ${playfair.className}`}>Beauty Ireoluwa </p>
-        </div>
-        <div className="flex flex-row md:gap-[88px] justify-between">
         
+        <div className="flex flex-row md:gap-[88px] justify-between">
+            <div className="flex justify-center items-center">
+              <p className={`lowercase ${playfair.className}`}>Beauty Ireoluwa </p>
+            </div>
             <ul className="flex flex-col gap-3">
               <li>Dealer on all kinds of jewelries</li>
               <li>Phone: +234 9102469802</li>
@@ -32,21 +32,15 @@ export default function Footer() {
             <li>Return Policy</li>
             <li>Shipping and Delivery</li>
           </ul>
-          <div className="flex flex-col justify-center gap-4">
-            <p className="flex justify-end">Sign up and get 15% off on your first order!</p>
-            <div className="flex flex-row gap-4">
-              <input type="search" className='py-1 px-3 text-sm max-w-[336px] h-9 bg-neutral  focus:text-black outline-none bg-inherit rounded-xl' placeholder='Your Email Address'  />
-              <button className="bg-secondary w-full h-9 text-sm rounded-xl py-[9.5px] px-[20px]">Subscribe</button>
-            </div>
-          </div>
+          <ul className="flex flex-col gap-3">
+            <li>About Us</li>
+            <li>Blog</li>
+            <li>Our Story</li>
+            <li>Careers</li>
+          </ul>
 
         </div>
-        <div>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        
         
       </div>
     </>

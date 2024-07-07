@@ -46,7 +46,7 @@ const CartPage = () => {
   return (
     <>
     <Navbar/>
-    <div className="container bg-[#F5F5F5] mx-auto">
+    <div className="container bg-[#F5F5F5] mx-auto flex flex-col gap-[88px]">
       
       <div className="px-6">
         <h1 className={`flex justify-center text-2xl font-bold mb-4 ${playfair.className}`}>Your Cart</h1>
@@ -97,9 +97,9 @@ const CartPage = () => {
         </div>
       </div>
       
-      
+      <Footer/>
     </div>
-    <Footer/>
+    
     </>
 
   );
