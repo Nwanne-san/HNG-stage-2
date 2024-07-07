@@ -78,6 +78,13 @@ const productItems = [
         name: "Beaded Bracelet",
         price: 5000,
     },
+    {
+        id: 13,
+        imgSrc: "/images/img13.jpg",
+        name: "Custom Gold Necklace",
+        price: 3500,
+        discount: '25% off'
+    },
     
 ]
 
