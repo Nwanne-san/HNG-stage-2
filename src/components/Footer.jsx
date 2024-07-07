@@ -10,7 +10,7 @@ export default function Footer() {
         <div>
           <p className={`lowercase ${playfair.className}`}>Beauty Ireoluwa </p>
         </div>
-        <div className="flex flex-row gap-[88px] justify-between">
+        <div className="flex flex-row md:gap-[88px] justify-between">
         
             <ul className="flex flex-col gap-3">
               <li>Dealer on all kinds of jewelries</li>
@@ -35,8 +35,8 @@ export default function Footer() {
           <div className="flex flex-col justify-center gap-4">
             <p className="flex justify-end">Sign up and get 15% off on your first order!</p>
             <div className="flex flex-row gap-4">
-              <input type="search" className='py-1 px-3 text-sm w-[336px] h-9 bg-neutral  focus:text-black outline-none bg-inherit rounded-xl' placeholder='Your Email Address'  />
-              <button className="bg-secondary w-[100px] h-9 text-sm rounded-xl ">Subscribe</button>
+              <input type="search" className='py-1 px-3 text-sm max-w-[336px] h-9 bg-neutral  focus:text-black outline-none bg-inherit rounded-xl' placeholder='Your Email Address'  />
+              <button className="bg-secondary w-full h-9 text-sm rounded-xl py-[9.5px] px-[20px]">Subscribe</button>
             </div>
           </div>
 

@@ -4,7 +4,7 @@ import Navigation from '../../public/images/Navbar.svg'
 import Search from '../../public/images/search.svg'
 import User from '../../public/images/user.svg'
 import Cart from '../../public/images/cart.svg'
-
+import Link from 'next/link'
 
 export default function Navbar()  {
     return (
@@ -15,7 +15,7 @@ export default function Navbar()  {
             <div className='flex justify-center gap-[56px] items-center'>
                 <span><Image src={Search}/></span>
                 <span><Image src={User}/></span>
-                <span><Image src={Cart}/></span>
+                <Link href='/cart'><Image src={Cart}/></Link>
             </div>
 
         </div>
