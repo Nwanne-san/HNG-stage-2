@@ -13,7 +13,7 @@ const ProductSection = () => {
   return (
     <div className="flex flex-row justify-around w-full gap-[104px] px-8 py-[4em] ">
       
-      <div className="grid justify-center  md:grid-rows-2 gap-8">
+      <div className="grid justify-center md:grid-cols-4 grid-rows-2 gap-8">
         {productItems.slice(0,12).map((product) => (
           <div key={product.id} className="flex flex-col items-center bg-beige w-full h-fit rounded-2xl ">
             <div className="relative">
