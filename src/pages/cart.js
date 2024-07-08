@@ -26,28 +26,28 @@ const CartPage = () => {
     router.push('/checkout');
   };
 
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
+  // const calculateTotal = () => {
+  //   return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  // };
 
-  const renderCartItems = () => {
-    return cartItems.map((item) => (
-      <div key={item.id} className="flex items-center gap-4 border-b py-4">
-        <img src={item.imgSrc} alt={item.name} className="w-20 h-20 object-cover rounded" />
-        <div className="flex-1">
-          <p>{item.name}</p>
-          <p className="flex gap-2 items-center"><Image src={Currency}/>{item.price.toLocaleString()}</p>
-          <div className="flex items-center gap-2">
-            <button className="px-2 py-1 bg-gray-200">-</button>
-            <span>{item.quantity}</span>
-            <button className="px-2 py-1 bg-gray-200">+</button>
-          </div>
-          <p className="mt-2 flex gap-1">Total: <Image src={Currency}/>{(item.price * item.quantity).toLocaleString()}</p>
-        </div>
-        <button className="px-4 py-2 bg-red-500 text-white">Remove</button>
-      </div>
-    ));
-  };
+  // const renderCartItems = () => {
+  //   return cartItems.map((item) => (
+  //     <div key={item.id} className="flex items-center gap-4 border-b py-4">
+  //       <img src={item.imgSrc} alt={item.name} className="w-20 h-20 object-cover rounded" />
+  //       <div className="flex-1">
+  //         <p>{item.name}</p>
+  //         <p className="flex gap-2 items-center"><Image src={Currency}/>{item.price.toLocaleString()}</p>
+  //         <div className="flex items-center gap-2">
+  //           <button className="px-2 py-1 bg-gray-200">-</button>
+  //           <span>{item.quantity}</span>
+  //           <button className="px-2 py-1 bg-gray-200">+</button>
+  //         </div>
+  //         <p className="mt-2 flex gap-1">Total: <Image src={Currency}/>{(item.price * item.quantity).toLocaleString()}</p>
+  //       </div>
+  //       <button className="px-4 py-2 bg-red-500 text-white">Remove</button>
+  //     </div>
+  //   ));
+  // };
 
   return (
     <>
@@ -63,20 +63,18 @@ const CartPage = () => {
                     <span className={`${lato.className} absolute top-[-4px] right-[-12px] flex justify-center items-center px-[8.5px] py-[1.5px] rounded-xl text-neutral bg-secondary `}>2</span>
                   </Link>
                 </div>
-            
-
         </div>
     <div className="container bg-[#F5F5F5] mx-auto flex flex-col gap-[88px]">
       
       <div className="px-6 flex flex-col gap-14">
         <h1 className={`flex justify-center text-2xl font-bold mb-4 ${playfair.className}`}>YOUR CART</h1>
-        <div className="flex flex-row gap-[72px] h-full justify-between ">
+        <div className="flex sm:flex-row flex-col gap-[72px] h-full justify-between ">
           <div className="flex flex-col px-11 py-20 rounded-3xl  gap-[96px] min-w-[66%] bg-[#FFFFFF]">
             {cartItem.map((product) => (
-              <div key={product.id} className="flex gap-8">
+              <div key={product.id} className="flex sm:flex-row flex-col gap-8">
                 <img
                 src={product.imgSrc}
-                className="object-cover max-w-[447px] max-h-[363px] rounded-2xl"
+                className="object-cover w-[244px] h-[199px] lg:max-w-[447px] lg:max-h-[363px] rounded-2xl"
                 />
                 <div className="flex flex-col gap-6">
                   <div  className={`${lato.className}`}>
@@ -132,9 +130,9 @@ const CartPage = () => {
           
         </div>
       </div>
-      <div className="flex flex-col gap-10 justify-center px-[92px]">
+      <div className="flex flex-col gap-10 justify-center px-4 sm:px-[92px]">
           <h1 className={`${playfair.className} flex justify-center text-[28px] font-semibold leading-[37.32px]`}>Usually bought together</h1>
-          <div className="flex gap-8 justify-center">
+          <div className="hidden sm:flex gap-8 justify-center">
             {frequentItem.map((product) =>(
               <div key={product.id} className="flex flex-col items-center bg-beige justify-center h-fit rounded-2xl ">
               <div className="relative">
@@ -160,10 +158,36 @@ const CartPage = () => {
             </div>
             ))}
           </div>
+          <div className="carousel-container grid w-full  md:grid-cols-4 sm:gap-6 gap-4 sm:hidden">
+        {frequentItem.map((product) => (
+          <div key={product.id} className="flex flex-col carousel-item items-center w-auto h-fit rounded-2xl ">
+            <div className="relative">
+              <Image src={Like} className="absolute top-4 right-4 "/>
+              <img
+                src={product.imgSrc}
+                alt={product.name}
+                className="object-cover w-[286px] h-[229px] rounded-t-2xl "
+              />
+            </div>
+            <div className="flex flex-col justify-center items-center gap-4 w-full bg-white py-4  px-2 rounded-b-2xl ">
+              <div className="flex flex-col justify-center items-center gap-1">
+                <p className={`${playfair.className} text-pink font-medium text-[20px] leading-[28px]`}>{product.name}</p>
+                <p className={`${lato.className} text-[18px] leading-[21px] flex gap-[3px]`}><Image src={Currency}/>{product.price.toLocaleString()}</p>
+              </div>
+              <button
+                className="px-[18.5px] py-2 border border-secondary rounded-xl hover:text-white hover:bg-secondary duration-200"
+                
+              >
+                <Link href='/cart'>Add to cart</Link>
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="flex flex-col gap-10 justify-center px-[92px]">
+      </div>
+      <div className="flex flex-col gap-10 justify-center px-4 sm:px-[92px]">
           <h1 className={`${playfair.className} flex justify-center text-[28px] font-semibold leading-[37.32px]`}>You may also like...</h1>
-          <div className="flex gap-8 justify-center">
+          <div className="hidden sm:flex gap-8 justify-center">
             {randomItem.map((product) =>(
               <div key={product.id} className="flex flex-col items-center bg-beige justify-center h-fit rounded-2xl ">
               <div className="relative">
@@ -189,6 +213,32 @@ const CartPage = () => {
             </div>
             ))}
           </div>
+          <div className="carousel-container grid w-full  md:grid-cols-4 sm:gap-6 gap-4 sm:hidden">
+        {randomItem.map((product) => (
+          <div key={product.id} className="flex flex-col carousel-item items-center w-auto h-fit rounded-2xl ">
+            <div className="relative">
+              <Image src={Like} className="absolute top-4 right-4 "/>
+              <img
+                src={product.imgSrc}
+                alt={product.name}
+                className="object-cover w-[286px] h-[229px] rounded-t-2xl "
+              />
+            </div>
+            <div className="flex flex-col justify-center items-center gap-4 w-full bg-white py-4  px-2 rounded-b-2xl ">
+              <div className="flex flex-col justify-center items-center gap-1">
+                <p className={`${playfair.className} text-pink font-medium text-[20px] leading-[28px]`}>{product.name}</p>
+                <p className={`${lato.className} text-[18px] leading-[21px] flex gap-[3px]`}><Image src={Currency}/>{product.price.toLocaleString()}</p>
+              </div>
+              <button
+                className="px-[18.5px] py-2 border border-secondary rounded-xl hover:text-white hover:bg-secondary duration-200"
+                
+              >
+                <Link href='/cart'>Add to cart</Link>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
       </div>
       
       <Footer/>

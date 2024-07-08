@@ -14,7 +14,7 @@ const ProductSection = () => {
 
 
   return (
-    <div className="flex flex-row justify-around w-full gap-[104px] px-8 py-[4em] ">
+    <div className="flex flex-row justify-around w-full gap-[104px] px-4 sm:px-8 py-[4em] ">
       
       <div className="hidden sm:grid justify-center lg:grid-cols-4 sm:grid-cols-3 gap-8">
         {productItems.slice(0,12).map((product) => (
@@ -42,7 +42,7 @@ const ProductSection = () => {
           </div>
         ))}
       </div>
-      <div className="carousel-container grid w-full  md:grid-cols-4  gap-8 sm:hidden">
+      <div className="carousel-container grid w-full  md:grid-cols-4 sm:gap-6 gap-4 sm:hidden">
         {productionItem.map((product) => (
           <div key={product.id} className="flex flex-col carousel-item items-center w-auto h-fit rounded-2xl ">
             <div className="relative">
