@@ -156,9 +156,9 @@ const Checkout = () => {
                         </div>
                         <div className="flex justify-center w-full">
                             <button className=" flex items-center justify-center sm:w-auto w-full gap-2 py-[13.5px] px-[44.5px] text-[18px] font-medium text-neutral bg-pink sm:rounded-xl fixed sm:relative bottom-0">PAY 
-                                <span className="flex items-center">
+                                <Link href='/success' className="flex items-center">
                                     <Image src={Note} className=""/> 12,500 
-                                </span>
+                                </Link>
                             </button>
                         </div>
                     </div>
