@@ -12,14 +12,11 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between bg-[#F5F5F5] ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between bg-[#F5F5F5] `}
     >
       <Navbar/>
       <HeroSection/>
       <ProductSection/>
-      
-
-      {/* <Navbar/> */}
       <Reviews/>
       <Footer/>
     </main>

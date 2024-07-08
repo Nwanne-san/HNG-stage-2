@@ -11,7 +11,7 @@ export default function heroSection(){
         <div className="flex flex-col w-full text-[#FFFFFF] ">
             <div className="shop h-[471px] flex flex-col gap-6 justify-center items-center">
                 <p className={`${playfair.className} text-[32px] font-bold leading-10`}>Handcrafted Jewelry That Tells Your Unique Story</p>
-                <p className={`w-[694px] text-[18px] leading-[21px] flex items-center font-normal ${lato.className} `}>Explore our exclusive collection of artisanal jewelry, meticulously crafted to add a touch of sophistication to every moment. 
+                <p className={`w-[694px] text-[18px] leading-[21px] flex text-center mx-auto font-normal ${lato.className} `}>Explore our exclusive collection of artisanal jewelry, meticulously crafted to add a touch of sophistication to every moment. 
                     From elegant necklaces to stunning custom pieces, find the perfect adornment to celebrate your individuality.
                 </p>
                 <button className={`${lato.className} font-bold px-6 py-4 bg-pink rounded-xl`}>Shop now</button>

@@ -14,7 +14,7 @@ export default function Reviews(){
             </div>
             <div className='flex flex-col max-w-[400px] justify-center items-center gap-6'>
                 <Image src={Comment}/>
-                <p className={`${playfair.className}`}>Beauty is the best at what she does.
+                <p className={`${playfair.className} text-center`}>Beauty is the best at what she does.
                      Quality delivery? Check! Exceeding expectation? 
                      Check!! Timely delivery? Check!!!
                 </p>

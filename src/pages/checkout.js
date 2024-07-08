@@ -5,7 +5,9 @@ import Logo from '../../public/images/Logo.svg'
 import Cart from '../../public/images/cart.svg'
 import Footer from "@/components/Footer";
 import Currency from '../../public/images/naira.svg';
+import Note from '../../public/images/note.svg'
 import Right from '../../public/images/arrow.svg'
+import Left from '../../public/images/left.svg'
 import productItems from "@/data/productItems";
 
 
@@ -53,13 +55,13 @@ const Checkout = () => {
                     <span className="text-[#333333]/60">Confirmation</span>
                 </div>
             </div>
-            <div className="flex gap-[68px] pl-8 pr-[56px]">
-                <div className="flex flex-col pl-12 py-10 pr-20 rounded-3xl bg-white">
-                    <div className="flex flex-col gap-4 justify-start">
+            <div className="flex flex-col-reverse sm:flex-row gap-[59px] sm:gap-[40px] lg:gap-[68px] sm:pl-8 sm:pr-8 lg:pr-[56px]">
+                <div className="flex flex-col sm:px-8 lg:pl-12 lg:pr-20 sm:pb-10 rounded-3xl sm:bg-white">
+                    <div className="flex flex-col sm:px-0 px-[25px] sm:pt-10  gap-4 justify-start">
                         <h1 className={`${playfair.className} text-pink text-[20px] font-medium`}>SHIPPING DETAILS</h1>
                         <hr className="text-secondary "/>
                     </div>
-                    <div className={`${lato.className} grid grid-cols-2 gap-[120px] pt-6 text-gray`}>
+                    <div className={`${lato.className} flex flex-col sm:grid sm:grid-cols-2 sm:px-0 px-[25px] gap-4 sm:gap-[40px] lg:gap-[120px] pt-6 text-gray`}>
                             <div className="flex flex-col gap-4">
                                 <div className="flex flex-col gap-2">
                                     <p className="text-[18px] font-medium">Recipient's Name:</p>
@@ -104,33 +106,108 @@ const Checkout = () => {
                         
                         
                     </div>
+                    <div className="flex flex-col py-10 sm:px-0 px-[25px]  gap-4 justify-start">
+                        <h1 className={`${playfair.className} text-pink text-[20px] font-medium`}>PAYMENT DETAILS</h1>
+                        <hr className="text-secondary "/>
+                    </div>
+                    <div className={`${lato.className} flex flex-col w-full  gap-14 sm:gap-12`}>
+                        <div className="flex flex-col gap-3 sm:px-0 px-[25px]">
+                            <div className="flex flex-col gap-2">
+                                <label className="text-[#333333]/60">Name on card</label>
+                                <input
+                                type="text"
+                                value='JESSICA OMOLADE'
+                                className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="text-[#333333]/60">Card number</label>
+                                <input
+                                type="text"
+                                value='4101 2589 0925 8861'
+                                className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md"
+                                />
+                            </div>
+                            <div className="flex gap-4 w-full justify-between">
+                                <div className="flex flex-col gap-2 w-[70%] sm:w-full">
+                                    <label className="text-[#333333]/60">Expiration Date</label>
+                                    <input
+                                    type="text"
+                                    value='12/25'
+                                    className="px-3 py-[9.5px] flex w-full justify-start border text-gray border-[#D0D5DD] rounded-md"
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 sm:w-full">
+                                    <label className="text-[#333333]/60">CVV</label>
+                                    <input
+                                    type="number"
+                                    value='025'
+                                    className="px-3 py-[9.5px] flex justify-start w-full border text-gray border-[#D0D5DD] rounded-md"
+                                    />
+                                </div>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <input
+                                type="checkbox"
+                                />
+                                <label className="text-gray">I have read and agree to the terms and conditions</label>
+                            </div>
+                        </div>
+                        <div className="flex justify-center w-full">
+                            <button className=" flex items-center justify-center sm:w-auto w-full gap-2 py-[13.5px] px-[44.5px] text-[18px] font-medium text-neutral bg-pink sm:rounded-xl">PAY 
+                                <span className="flex items-center">
+                                    <Image src={Note} className=""/> 12,500 
+                                </span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <aside className="flex flex-col gap-6">
+                <aside className="flex flex-col px-4 sm:p-0 gap-4 sm:gap-6">
                     <h1 className={`${playfair.className} text-pink text-[20px] font-medium`}>YOUR ORDER</h1>
-                    <div className={`${lato.className} flex flex-col pl-12 pb-8 pt-4 pr-[60px] gap-4 rounded-3xl bg-white`}><div className="flex  justify-between">
+                    <div className={`${lato.className} flex flex-col lg:pl-12 pb-8 pt-4 lg:pr-[60px] gap-4 rounded-3xl bg-white`}>
+                        <div className="flex pl-12 pr-4 sm:px-3 lg:p-0 justify-between">
                             <p>Two items</p>
                             <span>Edit cart</span>
-                        </div><hr className="text-secondary "/>
-                        {cartItems.map((product) => (
-                        <div key={product.id} className="flex flex-col gap-4">
-                        
-                        
-                        <div className="flex justify-start gap-[85px]">
-                            <div className="flex justify-center items-center gap-6">
-                                <img
-                                src={product.imgSrc}
-                                className="w-[129px] h-[120px] rounded-2xl"
-                                />
-                                <span>{product.name}</span>
-                            </div>
-                            <span className="flex items-center text-[18px]"><Image src={Currency}/> {product.price.toLocaleString()}</span>
                         </div>
                         <hr className="text-secondary "/>
+                        <div  className="flex flex-col gap-4">
+                            <div className="flex justify-start px-8 sm:px-3 lg:p-0 gap-3 lg:gap-6 ">
+                                <div className="flex justify-center items-center ">
+                                    <img
+                                    src={cartItem[0].imgSrc}
+                                    className="w-[78px] h-[73px] lg:w-[129px] lg:h-[120px] rounded-2xl"
+                                    />
+                                
+                                </div>
+                                <div className="flex lg:flex-row flex-col justify-center sm:justify-start lg:items-center  lg:gap-[85px]">
+                                    <span >{cartItem[0].name}</span>
+                                    <span className="flex items-center text-[18px]"><Image src={Currency}/> {cartItem[0].price.toLocaleString()}</span>
+                                </div>
+                            </div>
+                            <hr className="text-secondary "/>
+                            <div className="flex justify-start px-8 sm:px-3 lg:p-0 gap-3 lg:gap-6 ">
+                                <div className="flex justify-center items-center ">
+                                    <img
+                                    src={cartItem[1].imgSrc}
+                                    className="w-[78px] h-[73px] lg:w-[129px] lg:h-[120px] rounded-2xl"
+                                    />
+                                
+                                </div>
+                                <div className="flex lg:flex-row flex-col justify-center sm:justify-start lg:items-center  lg:gap-[85px]">
+                                    <span >{cartItem[1].name}</span>
+                                    <span className="flex items-center text-[18px]"><Image src={Currency}/> {cartItem[1].price.toLocaleString()}</span>
+                                </div>
+                            </div>
                         </div>
-                     ))}
                     </div>
                
                 </aside>
+            </div>
+            <div className="hidden sm:flex px-20 py-10 items-center ">
+                <Link href='/' className="sm:flex gap-6">
+                    <Image src={Left} />
+                    <span className={`${lato.className} text-[18px] font-medium `}>Back to shop</span>
+                </Link>
             </div>
         </div>
         </>
