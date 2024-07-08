@@ -43,41 +43,49 @@ const CartPage = () => {
                     <span className={`${lato.className} absolute top-[-2px] sm:top-[-4px] right-[-8px] sm:right-[-12px] flex justify-center text-[10px] sm:text-base items-center px-[6px] py-[2px] sm:px-[8.5px] sm:py-[1.5px] rounded-xl text-neutral bg-secondary `}>2</span>
                   </Link>
                 </div>
-        </div>
+    </div>
     <div className="container bg-[#F5F5F5] mx-auto flex flex-col gap-[88px]">
       
       <div className="px-6 flex flex-col gap-8 sm:gap-14">
         <h1 className={`flex justify-center text-2xl font-bold mb-4 ${playfair.className}`}>YOUR CART</h1>
-        <div className="flex sm:flex-row flex-col gap-[72px] h-full justify-between ">
+        <div className="flex lg:flex-row flex-col sm:gap-12 lg:gap-[72px] h-full justify-between ">
           <div className="flex flex-col px-8 sm:px-11 sm:py-20 rounded-3xl gap-14 sm:gap-[96px] min-w-[66%] sm:bg-[#FFFFFF]">
             {cartItem.map((product) => (
-              <div key={product.id} className="flex sm:flex-row flex-col items-center sm:items-start gap-8">
+              <div key={product.id} className="flex lg:flex-row flex-col items-center sm:items-start gap-8">
                 <img
                 src={product.imgSrc}
-                className="object-cover w-[244px] h-[199px] lg:max-w-[447px] lg:max-h-[363px] rounded-2xl"
+                className="object-cover w-[244px] h-[199px] lg:w-[447px] lg:h-[363px] rounded-2xl"
                 />
-                <div className="flex flex-col gap-6 items-center">
-                  <div  className={`${lato.className} sm:block flex items-center flex-col`}>
-                    <h2 className={`${playfair.className} flex items-center sm:block text-pink text-[20px] sm:text-[28px] font-semibold`}>{product.name}</h2>
-                    <p className="text-sm sm:text-[18px] text-center sm:text-start"><span className={`sm:${playfair.className} items-center text-sm sm:text-[20px] font-medium`}>Description</span>: These elegant stud earrings feature rare gemstones, meticulously crafted to add a touch of sophistication to any outfit. Perfect for both casual and formal occasions.</p>
-                    <div className={`${playfair.className} flex flex-col gap-2`}>
-                      <span >Quantity : -  1  +</span>
-                      <span className={`${lato.className} flex gap-10 text-[20px] items-center`}>Price:<span className="flex text-[18px] "><Image src={Currency}/> {product.price.toLocaleString()} </span>  </span>
-                      <span className={`${lato.className} flex gap-4 text-[20px] items-center`}>Subtotal:<span className="flex text-[18px]"><Image src={Currency}/> {product.price.toLocaleString()} </span>  </span>
+                <div className="flex flex-col gap-6 sm:items-start items-center">
+                  <div  className={`${lato.className} flex sm:gap-6 sm:items-start items-center flex-col`}>
+                    <div className="flex flex-col gap-4">
+                      <h2 className={`${playfair.className} flex justify-center sm:justify-start items-center sm:block text-pink text-[20px] sm:text-[28px] font-semibold`}>{product.name}</h2>
+                      <p className="text-sm sm:text-[18px] sm:leading-[21.6px] text-center sm:text-start">
+                        <span className={`sm:${playfair.className} ${lato.className} items-center text-sm sm:text-[20px] font-medium`}>Description</span>
+                        : These elegant stud earrings feature rare gemstones, meticulously crafted to add a touch of sophistication to any outfit. Perfect for both casual and formal occasions.
+                      </p>
+                    </div>
+                    <div className={`md:${playfair.className} flex flex-col gap-2`}>
+                      <span className={`${playfair.className} text-xl font-medium`}>Quantity : -  1  +</span>
+                      <p className={`${playfair.className} flex gap-10 text-xl font-medium items-center`}>Price:<span className="flex text-[18px] "><Image src={Currency}/> {product.price.toLocaleString()} </span>  </p>
+                      <p className={`${playfair.className} flex gap-4 text-xl font-medium items-center`}>Subtotal:<span className="flex text-[18px]"><Image src={Currency}/> {product.price.toLocaleString()} </span>  </p>
                       
                     </div>
                   </div>
                   <div>
 
                   </div>
-                  <div className="flex justify-start"><button  className={`px-[19px] py-[17.5px] sm:px-[18.5px] sm:py-2 border font-bold sm:font-normal border-secondary rounded-xl hover:text-white text-2xl sm:text-base hover:bg-secondary duration-200 ${lato.className}`}>Remove from cart</button></div>
+                  <div className="flex justify-start">
+                    <button  className={`px-[19px] py-[17.5px] sm:px-[18.5px] sm:py-2 border font-bold sm:font-normal border-secondary rounded-xl hover:text-white text-2xl sm:text-base hover:bg-secondary duration-200 ${lato.className}`}>Remove from cart
+                      </button>
+                  </div>
                 </div>
               </div>
               
             ))}
-            <div>
+          <div>
               
-            </div>
+        </div>
 
           </div>
           
@@ -85,7 +93,7 @@ const CartPage = () => {
                 <div className="flex flex-col gap-[48px]">
                     <div className="flex flex-col gap-4">
                       <h3 className={`${playfair.className} text-pink text-[20px] font-medium `}>Cart Total</h3>
-                      <div className="flex flex-col gap-2 items-center">
+                      <div className="flex flex-col gap-2 sm:items-start items-center">
                         <span className={`${lato.className} flex gap-2 text-[20px] items-center`}>Subtotal:
                           <span className="flex text-[18px] items-center"><Image src={Currency}/> 7,000 
                           </span>  
@@ -99,7 +107,7 @@ const CartPage = () => {
                           </span>  
                         </span>
                       </div>
-                      <span className={`${playfair.className} flex gap-2 text-[20px] text-pink items-center`}>Taxes:
+                      <span className={`${playfair.className} flex gap-2 text-[20px] text-pink justify-center sm:justify-start items-center`}>Total:
                           <span className={`${lato.className} flex text-[18px] items-center text-gray`}><Image src={Currency}/> 12,500 
                           </span>  
                         </span>
@@ -110,9 +118,9 @@ const CartPage = () => {
           
         </div>
       </div>
-      <div className="flex flex-col gap-4 sm:gap-10 justify-center px-4 sm:px-[92px]">
+      <div className="flex flex-col gap-4 sm:gap-10 justify-center px-4 sm:px-6 lg:px-[92px]">
           <h1 className={`${playfair.className} flex justify-center text-xl sm:text-[28px] font-semibold leading-[37.32px]`}>Usually bought together</h1>
-          <div className="hidden sm:flex gap-8 justify-center">
+          <div className="hidden lg:flex gap-8 justify-center">
             {frequentItem.map((product) =>(
               <div key={product.id} className="flex flex-col items-center bg-beige justify-center h-fit rounded-2xl ">
               <div className="relative">
@@ -138,7 +146,7 @@ const CartPage = () => {
             </div>
             ))}
           </div>
-          <div className="carousel-container grid w-full  md:grid-cols-4 sm:gap-6 gap-4 sm:hidden">
+          <div className="carousel-container grid w-full  sm:grid-cols-4 sm:gap-6 gap-4 lg:hidden">
         {frequentItem.map((product) => (
           <div key={product.id} className="flex flex-col carousel-item items-center w-auto h-fit rounded-2xl ">
             <div className="relative">
@@ -165,9 +173,9 @@ const CartPage = () => {
         ))}
       </div>
       </div>
-      <div className="flex flex-col gap-4 sm:gap-10 justify-center px-4 sm:px-[92px]">
+      <div className="flex flex-col gap-4 sm:gap-10 justify-center px-4 sm:px-6 lg:px-[92px]">
           <h1 className={`${playfair.className} flex justify-center text-xl sm:text-[28px] font-semibold leading-[37.32px]`}>You may also like...</h1>
-          <div className="hidden sm:flex gap-8 justify-center">
+          <div className="hidden lg:flex gap-8 justify-center">
             {randomItem.map((product) =>(
               <div key={product.id} className="flex flex-col items-center bg-beige justify-center h-fit rounded-2xl ">
               <div className="relative">
@@ -193,7 +201,7 @@ const CartPage = () => {
             </div>
             ))}
           </div>
-          <div className="carousel-container grid w-full  md:grid-cols-4 sm:gap-6 gap-4 sm:hidden">
+          <div className="carousel-container grid w-full  md:grid-cols-4 sm:gap-6 gap-4 lg:hidden">
         {randomItem.map((product) => (
           <div key={product.id} className="flex flex-col carousel-item items-center w-auto h-fit rounded-2xl ">
             <div className="relative">

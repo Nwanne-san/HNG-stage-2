@@ -9,7 +9,7 @@ import Note from '../../public/images/note.svg'
 import Right from '../../public/images/arrow.svg'
 import Left from '../../public/images/left.svg'
 import productItems from "@/data/productItems";
-
+import MobileCart from '../../public/images/mobile-cart.svg'
 
 const lato = Lato({ subsets: ["latin"], weight: ['400', '300', '700'] });
 const playfair = Playfair_Display({ subsets: ['latin'] });
@@ -37,10 +37,11 @@ const Checkout = () => {
         <>
         <div className='w-full bg-[#F5F5F5] flex justify-end items-center px-8 py-[18px]'>
             
-                <div className="relative">
+        <div className="relative">
                   <Link href='/cart' >
-                    <Image src={Cart} className="w-10 h-10"/>
-                    <span className={`${lato.className} absolute top-[-4px] right-[-12px] flex justify-center items-center px-[8.5px] py-[1.5px] rounded-xl text-neutral bg-secondary `}>2</span>
+                    <Image src={Cart} className="w-10 h-10 hidden sm:block"/>
+                    <Image src={MobileCart} className=" sm:hidden block"/>
+                    <span className={`${lato.className} absolute top-[-2px] sm:top-[-4px] right-[-8px] sm:right-[-12px] flex justify-center text-[10px] sm:text-base items-center px-[6px] py-[2px] sm:px-[8.5px] sm:py-[1.5px] rounded-xl text-neutral bg-secondary `}>2</span>
                   </Link>
                 </div>
         </div>
@@ -146,15 +147,15 @@ const Checkout = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="flex gap-2 items-center">
+                            <div className="flex gap-2 items-center pb-14 sm:p-0">
                                 <input
                                 type="checkbox"
                                 />
-                                <label className="text-gray">I have read and agree to the terms and conditions</label>
+                                <label className="text-gray text-sm leading-[16px]">I have read and agree to the terms and conditions</label>
                             </div>
                         </div>
                         <div className="flex justify-center w-full">
-                            <button className=" flex items-center justify-center sm:w-auto w-full gap-2 py-[13.5px] px-[44.5px] text-[18px] font-medium text-neutral bg-pink sm:rounded-xl">PAY 
+                            <button className=" flex items-center justify-center sm:w-auto w-full gap-2 py-[13.5px] px-[44.5px] text-[18px] font-medium text-neutral bg-pink sm:rounded-xl fixed sm:relative bottom-0">PAY 
                                 <span className="flex items-center">
                                     <Image src={Note} className=""/> 12,500 
                                 </span>
