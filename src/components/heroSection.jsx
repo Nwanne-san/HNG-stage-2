@@ -28,7 +28,7 @@ export default function heroSection(){
                         <p className={`flex ${lato.className} font-medium `}><Image src={Line}/><span>Explore</span></p>
                     </div>
                 </div>
-                <div className='h-[140px] sm:h-[313px] w-full text-secondary gap-2 lg:gap-0 flex flex-col justify-end pl-4 pb-2 sm:pl-[80px] sm:pb-[70px] arrivals'>
+                <div className='h-[140px] sm:h-[313px] lg:w-[50%] w-full text-secondary gap-2 lg:gap-0 flex flex-col justify-end pl-4 pb-2 sm:pl-[80px] sm:pb-[70px] arrivals'>
                     <h3 className={`${playfair.className} text-xl sm:text-[28px] leadin-[37.32px] font-semibold`}>New arrivals</h3>
                     <p className={`flex ${lato.className} font-medium `}><Image src={Line}/><span>Explore</span></p>
                 </div>
