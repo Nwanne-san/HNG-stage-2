@@ -12,6 +12,7 @@ const productItems = [
         name: "Rare Stud Earrings",
         price: 3500,
         discount: "25% off",
+        description: "These elegant stud earrings feature rare gemstones, meticulously crafted to add a touch of sophistication to any outfit. Perfect for both casual and formal occasions."
     },
     {
         id: 3,
@@ -83,7 +84,8 @@ const productItems = [
         imgSrc: "/images/img13.jpg",
         name: "Custom Gold Necklace",
         price: 3500,
-        discount: '25% off'
+        discount: '25% off',
+        description: "A beautifully designed gold necklace with customizable pendants, perfect for personalizing with initials or symbols that hold special meaning."
     },
     
 ]

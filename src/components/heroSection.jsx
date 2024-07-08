@@ -17,17 +17,19 @@ export default function heroSection(){
                 </p>
                 <button className={`${lato.className} font-bold px-6 py-4 bg-pink rounded-xl`}>Shop now</button>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 w-full">
-                <div className='h-[313px] text-secondary flex flex-col justify-end pl-[80px] pb-[70px] products'>
-                    <h3 className={`${playfair.className} text-[28px] leadin-[37.32px] font-semibold`}>All products</h3>
-                    <p className={`flex ${lato.className} font-medium `}><Image src={Line}/><span>Explore</span></p>
+            <div className="flex sm:flex-row flex-col w-full">
+                <div className="flex w-full">
+                    <div className='h-[140px] sm:h-[313px] w-full text-secondary flex flex-col justify-end pl-4 pb-2 sm:pl-[80px] sm:pb-[70px] products'>
+                        <h3 className={`${playfair.className} text-xl sm:text-[28px] leadin-[37.32px] font-semibold`}>All products</h3>
+                        <p className={`flex ${lato.className} font-medium `}><Image src={Line}/><span>Explore</span></p>
+                    </div>
+                    <div className='h-[140px] sm:h-[313px] w-full text-secondary flex flex-col justify-end pl-4 pb-2 sm:pl-[80px] sm:pb-[70px] sellers'>
+                        <h3 className={`${playfair.className} text-xl sm:text-[28px] leadin-[37.32px] font-semibold`}>Best sellers</h3>
+                        <p className={`flex ${lato.className} font-medium `}><Image src={Line}/><span>Explore</span></p>
+                    </div>
                 </div>
-                <div className='h-[313px] text-secondary flex flex-col justify-end pl-[80px] pb-[70px] sellers'>
-                    <h3 className={`${playfair.className} text-[28px] leadin-[37.32px] font-semibold`}>Best sellers</h3>
-                    <p className={`flex ${lato.className} font-medium `}><Image src={Line}/><span>Explore</span></p>
-                </div>
-                <div className='h-[313px] w-full text-secondary flex flex-col justify-end pl-[80px] pb-[70px] arrivals'>
-                    <h3 className={`${playfair.className} text-[28px] leadin-[37.32px] font-semibold`}>New arrivals</h3>
+                <div className='h-[140px] sm:h-[313px] w-full text-secondary gap-2 lg:gap-0 flex flex-col justify-end pl-4 pb-2 sm:pl-[80px] sm:pb-[70px] arrivals'>
+                    <h3 className={`${playfair.className} text-xl sm:text-[28px] leadin-[37.32px] font-semibold`}>New arrivals</h3>
                     <p className={`flex ${lato.className} font-medium `}><Image src={Line}/><span>Explore</span></p>
                 </div>
             </div>

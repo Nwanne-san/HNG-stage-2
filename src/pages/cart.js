@@ -46,29 +46,41 @@ const CartPage = () => {
     </div>
     <div className="container bg-[#F5F5F5] mx-auto flex flex-col gap-[88px]">
       
-      <div className="px-6 flex flex-col gap-8 sm:gap-14">
+      <div className="sm:px-6 flex flex-col gap-8 sm:gap-14">
         <h1 className={`flex justify-center text-2xl font-bold mb-4 ${playfair.className}`}>YOUR CART</h1>
-        <div className="flex lg:flex-row flex-col sm:gap-12 lg:gap-[72px] h-full justify-between ">
-          <div className="flex flex-col px-8 sm:px-11 sm:py-20 rounded-3xl gap-14 sm:gap-[96px] min-w-[66%] sm:bg-[#FFFFFF]">
+        <div className="flex lg:flex-row flex-col gap-6 sm:gap-12 lg:gap-[72px] h-full justify-between ">
+          <div className="flex flex-col px-11 sm:px-11 sm:py-20 rounded-3xl gap-14 sm:gap-[96px] min-w-[66%] sm:bg-[#FFFFFF]">
             {cartItem.map((product) => (
-              <div key={product.id} className="flex lg:flex-row flex-col items-center sm:items-start gap-8">
+              <div key={product.id} className="flex lg:flex-row flex-col items-center sm:items-start gap-6 sm:gap-8">
                 <img
                 src={product.imgSrc}
                 className="object-cover w-[244px] h-[199px] lg:w-[447px] lg:h-[363px] rounded-2xl"
                 />
-                <div className="flex flex-col gap-6 sm:items-start items-center">
-                  <div  className={`${lato.className} flex sm:gap-6 sm:items-start items-center flex-col`}>
+                <div className="flex flex-col gap-4 sm:gap-6 sm:items-start items-center">
+                  <div  className={`flex gap-4 sm:gap-6 sm:items-start items-center flex-col`}>
                     <div className="flex flex-col gap-4">
-                      <h2 className={`${playfair.className} flex justify-center sm:justify-start items-center sm:block text-pink text-[20px] sm:text-[28px] font-semibold`}>{product.name}</h2>
-                      <p className="text-sm sm:text-[18px] sm:leading-[21.6px] text-center sm:text-start">
-                        <span className={`sm:${playfair.className} ${lato.className} items-center text-sm sm:text-[20px] font-medium`}>Description</span>
-                        : These elegant stud earrings feature rare gemstones, meticulously crafted to add a touch of sophistication to any outfit. Perfect for both casual and formal occasions.
+                      <div className="flex flex-col sm:block gap-2">
+                        <h2 className={`${playfair.className} flex justify-center sm:justify-start items-center sm:block text-pink text-[20px] sm:text-[28px] font-semibold`}>{product.name}</h2>
+                        <p className={`${lato.className} sm:hidden px-[5px] block text-sm sm:text-[18px] sm:leading-[21.6px] text-center sm:text-start`}>
+                          <span className={`${lato.className}  items-center text-sm sm:text-[20px] font-medium`}>Description: </span>
+                          {product.description}
+                        </p>
+                      </div>
+                      <p className={`${lato.className}  hidden sm:block text-sm sm:text-[18px] sm:leading-[21.6px]  sm:text-start`}>
+                        <span className={`${playfair.className} items-center text-sm sm:text-[20px] font-medium`}>Description: </span>
+                        {product.description}
                       </p>
                     </div>
                     <div className={`md:${playfair.className} flex flex-col gap-2`}>
                       <span className={`${playfair.className} text-xl font-medium`}>Quantity : -  1  +</span>
-                      <p className={`${playfair.className} flex gap-10 text-xl font-medium items-center`}>Price:<span className="flex text-[18px] "><Image src={Currency}/> {product.price.toLocaleString()} </span>  </p>
-                      <p className={`${playfair.className} flex gap-4 text-xl font-medium items-center`}>Subtotal:<span className="flex text-[18px]"><Image src={Currency}/> {product.price.toLocaleString()} </span>  </p>
+                      <p className={`${playfair.className} flex gap-10 text-xl font-medium items-center`}>Price:
+                        <span className={`${lato.className} flex text-[18px]`}><Image src={Currency}/> {product.price.toLocaleString()} 
+                        </span>  
+                      </p>
+                      <p className={`${playfair.className} flex gap-4 text-xl font-medium items-center`}>Subtotal:
+                        <span className={`${lato.className} flex text-[18px]`}><Image src={Currency}/> {product.price.toLocaleString()} 
+                        </span>  
+                      </p>
                       
                     </div>
                   </div>
@@ -89,7 +101,7 @@ const CartPage = () => {
 
           </div>
           
-              <div className={`${lato.className} flex flex-col h-full w-full rounded-3xl gap-12 bg-[#FFFFFF] px-8 py-10 text-center sm:text-start `}>
+              <div className={`${lato.className} flex flex-col h-full w-full sm:rounded-3xl gap-12 bg-[#FFFFFF] sm:px-8 py-6 sm:py-10 text-center sm:text-start `}>
                 <div className="flex flex-col gap-[48px]">
                     <div className="flex flex-col gap-4">
                       <h3 className={`${playfair.className} text-pink text-[20px] font-medium `}>Cart Total</h3>
