@@ -127,7 +127,7 @@ const Checkout = () => {
                         </div>
                         <hr className="text-secondary "/>
                         </div>
-                     ))}<span>{cartItems.slice(0,1)}</span>
+                     ))}
                     </div>
                
                 </aside>
