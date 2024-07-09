@@ -8,12 +8,12 @@ export default function Footer() {
     <>
       <div className={`w-full bg-pink text-neutral flex flex-col py-4 px-6  ${lato.className}`}>
         
-        <div className="flex sm:flex-row flex-col sm:gap-20 gap-6  text-neutral">
-            <div className="flex justify-start sm:justify-center items-center">
+        <div className="flex lg:flex-row flex-col sm:gap-6 lg:gap-20 gap-6  text-neutral">
+            <div className="flex justify-start lg:justify-center items-center">
               <p className={`text-xl sm:text-[28px] font-normal sm:font-semibold ${playfair.className}`}>Beauty Ireoluwa</p>
             </div>
             <div className="grid grid-cols-2 gap-14 sm:gap-0 sm:flex">
-              <div className="flex flex-col sm:flex-row sm:gap-20 gap-6">
+              <div className="flex flex-col sm:flex-row sm:gap-6 lg:gap-20 gap-6">
                 <ul className="flex flex-col gap-3">
                   <li className={`text-sm sm:text-[20px] font-medium ${lato.className} sm:${playfair.className}`}>Dealer on all kinds of jewelries</li>
                   <li className="sm:text-base text-sm leading-[16px]">Phone: +234 9102469802</li>
@@ -28,7 +28,7 @@ export default function Footer() {
                 </ul>
               </div>
                         
-              <div className="flex flex-col sm:flex-row sm:gap-20 justify-between">
+              <div className="flex flex-col sm:flex-row sm:gap-6 lg:gap-20 justify-between">
                 <ul className="flex flex-col gap-2 sm:gap-3">
                   <li className={`text-lg sm:text-[20px] font-medium ${lato.className} sm:${playfair.className}`}>Terms of Service</li>
                   <li className="sm:text-base text-sm ">Privacy Policy</li>

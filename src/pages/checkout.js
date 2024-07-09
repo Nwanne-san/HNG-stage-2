@@ -39,8 +39,8 @@ const Checkout = () => {
             
         <div className="relative">
                   <Link href='/cart' >
-                    <Image src={Cart} className="w-10 h-10 hidden sm:block"/>
-                    <Image src={MobileCart} className=" sm:hidden block"/>
+                    <Image src={Cart} alt="cart logo" className="w-10 h-10 hidden sm:block"/>
+                    <Image src={MobileCart} alt="mobile-cart-logo" className=" sm:hidden block"/>
                     <span className={`${lato.className} absolute top-[-2px] sm:top-[-4px] right-[-8px] sm:right-[-12px] flex justify-center text-[10px] sm:text-base items-center px-[6px] py-[2px] sm:px-[8.5px] sm:py-[1.5px] rounded-xl text-neutral bg-secondary `}>2</span>
                   </Link>
                 </div>
@@ -50,15 +50,15 @@ const Checkout = () => {
                 <h1 className={`flex justify-center text-2xl font-bold mb-4 ${playfair.className}`}>YOUR CART</h1>
                 <div className={`${lato.className} flex gap-[10px] justify-center items-center`}>
                     <span className="text-[#333333]/60">Cart</span>
-                    <span><Image src={Right}/></span>
+                    <span><Image src={Right} alt="arrow-right"/></span>
                     <span className="text-secondary">Checkout</span>
-                    <span><Image src={Right}/></span>
+                    <span><Image src={Right} alt="arrow-right"/></span>
                     <span className="text-[#333333]/60">Confirmation</span>
                 </div>
             </div>
             <div className="flex flex-col-reverse sm:flex-row gap-[59px] sm:gap-[40px] lg:gap-[68px] sm:pl-8 sm:pr-8 lg:pr-[56px]">
-                <div className="flex flex-col sm:px-8 lg:pl-12 lg:pr-20 sm:pb-10 rounded-3xl sm:bg-white">
-                    <div className="flex flex-col sm:px-0 px-[25px] sm:pt-10  gap-4 justify-start">
+                <div className="flex flex-col sm:px-4 lg:pl-12 lg:pr-20 sm:pb-10 rounded-3xl sm:bg-white">
+                    <div className="flex flex-col sm:px-0 px-[25px] sm:pt-4 lg:pt-10  gap-4 justify-start">
                         <h1 className={`${playfair.className} text-pink text-[20px] font-medium`}>SHIPPING DETAILS</h1>
                         <hr className="text-secondary "/>
                     </div>
@@ -117,7 +117,8 @@ const Checkout = () => {
                                 <label className="text-[#333333]/60">Name on card</label>
                                 <input
                                 type="text"
-                                value='JESSICA OMOLADE'
+                                value='JESSICA OMOLADE' 
+                                readOnly
                                 className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md"
                                 />
                             </div>
@@ -125,7 +126,8 @@ const Checkout = () => {
                                 <label className="text-[#333333]/60">Card number</label>
                                 <input
                                 type="text"
-                                value='4101 2589 0925 8861'
+                                value='4101 2589 0925 8861' 
+                                readOnly
                                 className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md"
                                 />
                             </div>
@@ -135,6 +137,7 @@ const Checkout = () => {
                                     <input
                                     type="text"
                                     value='12/25'
+                                    readOnly
                                     className="px-3 py-[9.5px] flex w-full justify-start border text-gray border-[#D0D5DD] rounded-md"
                                     />
                                 </div>
@@ -143,6 +146,7 @@ const Checkout = () => {
                                     <input
                                     type="number"
                                     value='025'
+                                    readOnly
                                     className="px-3 py-[9.5px] flex justify-start w-full border text-gray border-[#D0D5DD] rounded-md"
                                     />
                                 </div>
@@ -157,7 +161,7 @@ const Checkout = () => {
                         <div className="flex justify-center w-full">
                             <button className=" flex items-center justify-center sm:w-auto w-full gap-2 py-[13.5px] px-[44.5px] text-[18px] font-medium text-neutral bg-pink sm:rounded-xl fixed sm:relative bottom-0">PAY 
                                 <Link href='/success' className="flex items-center">
-                                    <Image src={Note} className=""/> 12,500 
+                                    <Image src={Note} alt="naira"/> 12,500 
                                 </Link>
                             </button>
                         </div>
