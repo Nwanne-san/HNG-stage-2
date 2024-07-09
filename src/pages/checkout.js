@@ -10,6 +10,7 @@ import Right from '../../public/images/arrow.svg'
 import Left from '../../public/images/left.svg'
 import productItems from "@/data/productItems";
 import MobileCart from '../../public/images/mobile-cart.svg'
+import Down from '../../public/images/arrow-down.svg'
 
 const lato = Lato({ subsets: ["latin"], weight: ['400', '300', '700'] });
 const playfair = Playfair_Display({ subsets: ['latin'] });
@@ -59,7 +60,10 @@ const Checkout = () => {
             <div className="flex flex-col-reverse sm:flex-row gap-[59px] sm:gap-[40px] lg:gap-[68px] sm:pl-8 sm:pr-8 lg:pr-[56px]">
                 <div className="flex flex-col sm:px-4 lg:pl-12 lg:pr-20 sm:pb-10 rounded-3xl sm:bg-white">
                     <div className="flex flex-col sm:px-0 px-[25px] sm:pt-4 lg:pt-10  gap-4 justify-start">
-                        <h1 className={`${playfair.className} text-pink text-[20px] font-medium`}>SHIPPING DETAILS</h1>
+                        <div className="flex sm:p-0 px-2 items-center justify-between">
+                            <h1 className={`${playfair.className}  text-pink text-[20px] font-medium`}>SHIPPING DETAILS </h1>
+                            <Image src={Down} className=" sm:hidden block items-center"/>
+                        </div>
                         <hr className="text-secondary "/>
                     </div>
                     <div className={`${lato.className} flex flex-col sm:grid sm:grid-cols-2 sm:px-0 px-[25px] gap-4 sm:gap-[40px] lg:gap-[120px] pt-6 text-gray`}>
@@ -108,7 +112,10 @@ const Checkout = () => {
                         
                     </div>
                     <div className="flex flex-col py-10 sm:px-0 px-[25px]  gap-4 justify-start">
-                        <h1 className={`${playfair.className} text-pink text-[20px] font-medium`}>PAYMENT DETAILS</h1>
+                        <div className="flex sm:p-0 px-2 items-center justify-between">
+                            <h1 className={`${playfair.className}  text-pink text-[20px] font-medium`}>SHIPPING DETAILS </h1>
+                            <Image src={Down} className=" sm:hidden block items-center"/>
+                        </div>
                         <hr className="text-secondary "/>
                     </div>
                     <div className={`${lato.className} flex flex-col w-full  gap-14 sm:gap-12`}>
