@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { fetchProductById, fetchProducts } from '@/utils/api'; // Adjust the import path as needed
+import { fetchProductById } from '@/utils/api'; // Adjust the import path as needed
 import Image from 'next/image';
 import { Lato, Playfair_Display } from "next/font/google";
 import Currency from '../../../public/images/naira.svg';
@@ -20,10 +20,6 @@ const ProductDetail = ({ product }) => {
     addToCart(product);
     toast.success(`${product.name} added to cart!`);
   };
-
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   if (!product) {
     return <div>Product not found</div>;
@@ -62,16 +58,7 @@ const ProductDetail = ({ product }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const products = await fetchProducts();
-  const paths = products.map((product) => ({
-    params: { id: product.id.toString() },
-  }));
-
-  return { paths, fallback: true };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const product = await fetchProductById(params.id);
 
   if (!product) {
