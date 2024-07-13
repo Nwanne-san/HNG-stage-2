@@ -9,6 +9,9 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    domains: ['api.timbu.cloud'], // Add your image domain here
+  },
 };
 
 export default nextConfig;
