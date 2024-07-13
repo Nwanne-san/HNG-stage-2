@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { fetchProductById, fetchProducts } from '@/utils/axiosInstance'; // Adjust the import path as needed
+import { fetchProductById, fetchProducts } from '@/utils/api'; // Adjust the import path as needed
 import Image from 'next/image';
 import { Lato, Playfair_Display } from "next/font/google";
 import Currency from '../../../public/images/naira.svg';

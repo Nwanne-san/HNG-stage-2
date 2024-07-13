@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 import Like from '../../public/images/like.svg';
 import MobileCart from '../../public/images/mobile-cart.svg'
 import MobileLogo from '../../public/images/mobile-logo.svg'
-import { fetchProductById } from "@/utils/axiosInstance";
+import { fetchProductById } from "@/utils/api";
 import { useCart } from "@/cartContext";
 import toast, { Toaster } from 'react-hot-toast';
 

@@ -13,7 +13,7 @@ import MobileCart from '../../public/images/mobile-cart.svg'
 import Down from '../../public/images/arrow-down.svg'
 import { useCart } from "@/cartContext";
 import React, { useState, useEffect } from "react";
-import { fetchProductById } from "@/utils/axiosInstance";
+import { fetchProductById } from "@/utils/api";
 
 const lato = Lato({ subsets: ["latin"], weight: ['400', '300', '700'] });
 const playfair = Playfair_Display({ subsets: ['latin'] });

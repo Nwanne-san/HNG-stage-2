@@ -1,4 +1,3 @@
-// utils/api.js
 import axios from 'axios';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -21,7 +20,6 @@ const extractPrice = (current_price) => {
     return "Price not available";
   };
   
-
 export const fetchProducts = async (page = PAGE, size = SIZE) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/products`, {
@@ -47,7 +45,6 @@ export const fetchProducts = async (page = PAGE, size = SIZE) => {
         }`,
       }));
 
-
     return items;
   } catch (error) {
     console.error('Error fetching products:', error);
@@ -69,7 +66,6 @@ export const fetchProductById = async (productId) => {
     });
     return {
         ...response.data,
-        
         image: `https://api.timbu.cloud/images/${
           response.data.photos.length > 0 ? response.data.photos[0].url : ""
         }`,
@@ -78,4 +74,4 @@ export const fetchProductById = async (productId) => {
       console.error("Error fetching product:", error);
       return null;
     }
-  };
+};

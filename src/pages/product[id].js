@@ -1,6 +1,6 @@
 // pages/products/[id].js
 import React from "react";
-import { fetchProductById, fetchProducts } from "@/utils/axiosInstance"; // Adjust the import path as needed
+import { fetchProductById, fetchProducts } from "@/utils/api"; // Adjust the import path as needed
 import Image from "next/image";
 import Currency from "../../public/images/naira.svg";
 import { Lato, Playfair_Display } from "next/font/google";

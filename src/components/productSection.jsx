@@ -4,7 +4,7 @@ import Currency from '../../public/images/naira.svg';
 import Link from "next/link";
 import Image from "next/image";
 import Like from '../../public/images/like.svg';
-import { fetchProducts } from "@/utils/axiosInstance"; // Adjust the import path as needed
+import { fetchProducts } from "@/utils/api"; // Adjust the import path as needed
 import { useCart } from "@/cartContext";
 import toast, { Toaster } from 'react-hot-toast';
 
