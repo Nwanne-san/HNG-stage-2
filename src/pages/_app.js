@@ -1,10 +1,10 @@
 import "@/styles/globals.css";
-import Link from "next/link";
+import { CartProvider } from "@/cartContext";
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <CartProvider>
       <Component {...pageProps} />
-    </>
+    </CartProvider>
   );
 }

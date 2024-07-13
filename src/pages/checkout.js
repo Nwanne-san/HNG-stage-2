@@ -11,29 +11,41 @@ import Left from '../../public/images/left.svg'
 import productItems from "@/data/productItems";
 import MobileCart from '../../public/images/mobile-cart.svg'
 import Down from '../../public/images/arrow-down.svg'
+import { useCart } from "@/cartContext";
+import React, { useState, useEffect } from "react";
+import { fetchProductById } from "@/utils/axiosInstance";
 
 const lato = Lato({ subsets: ["latin"], weight: ['400', '300', '700'] });
 const playfair = Playfair_Display({ subsets: ['latin'] });
 
 const Checkout = () => {
 
-    const cartItems = productItems.filter((product) => product.id === 2 || product.id === 13);
-    const cartItem = [
-        {
-            id: 2,
-            imgSrc: "/images/img2.jpg",
-            name: "Rare Stud Earrings",
-            price: 3500,
-            discount: "25% off",
-        },
-        {
-            id: 13,
-            imgSrc: "/images/img13.jpg",
-            name: "Custom Gold Necklace",
-            price: 3500,
-            discount: '25% off'
-        },
-    ]
+    const { cartItems } = useCart(); // Assuming cartItems are provided by a context
+
+  const [productDetails, setProductDetails] = useState([]);
+
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      try {
+        const details = await Promise.all(
+          cartItems.map(async (item) => {
+            const product = await fetchProductById(item.id);
+            return { ...product, quantity: item.quantity };
+          })
+        );
+        setProductDetails(details);
+      } catch (error) {
+        console.error("Error fetching product details:", error);
+      }
+    };
+
+    fetchProductDetails();
+  }, [cartItems]);
+
+  const calculateSubtotal = () => {
+    return productDetails.reduce((sum, item) => sum + item.current_price * item.quantity, 0);
+  };
+    
     return(
         <>
         <div className='w-full bg-[#F5F5F5] flex justify-end items-center px-8 py-[18px]'>
@@ -125,7 +137,7 @@ const Checkout = () => {
                                 <input
                                 type="text"
                                 value='JESSICA OMOLADE' 
-                                readOnly
+                                
                                 className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md"
                                 />
                             </div>
@@ -134,7 +146,6 @@ const Checkout = () => {
                                 <input
                                 type="text"
                                 value='4101 2589 0925 8861' 
-                                readOnly
                                 className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md"
                                 />
                             </div>
@@ -144,23 +155,22 @@ const Checkout = () => {
                                     <input
                                     type="text"
                                     value='12/25'
-                                    readOnly
                                     className="px-3 py-[9.5px] flex w-full justify-start border text-gray border-[#D0D5DD] rounded-md"
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 sm:w-full">
                                     <label className="text-[#333333]/60">CVV</label>
                                     <input
-                                    type="number"
+                                    type="text"
                                     value='025'
-                                    readOnly
+                                    
                                     className="px-3 py-[9.5px] flex justify-start w-full border text-gray border-[#D0D5DD] rounded-md"
                                     />
                                 </div>
                             </div>
                             <div className="flex gap-2 items-center pb-14 sm:p-0">
                                 <input
-                                type="checkbox"
+                                type="checkbox" required
                                 />
                                 <label className="text-gray text-sm leading-[16px]">I have read and agree to the terms and conditions</label>
                             </div>
@@ -168,7 +178,7 @@ const Checkout = () => {
                         <div className="flex justify-center w-full">
                             <button className=" flex items-center justify-center sm:w-auto w-full gap-2 py-[13.5px] px-[44.5px] text-[18px] font-medium text-neutral bg-pink sm:rounded-xl fixed sm:relative bottom-0">PAY 
                                 <Link href='/success' className="flex items-center">
-                                    <Image src={Note} alt="naira"/> 12,500 
+                                    <Image src={Note} alt="naira"/> {(calculateSubtotal() + 3500 + 2000).toLocaleString()}
                                 </Link>
                             </button>
                         </div>
@@ -178,39 +188,30 @@ const Checkout = () => {
                     <h1 className={`${playfair.className} text-pink text-[20px] font-medium`}>YOUR ORDER</h1>
                     <div className={`${lato.className} flex flex-col lg:pl-12 pb-8 pt-4 lg:pr-[60px] gap-4 rounded-3xl bg-white`}>
                         <div className="flex pl-12 pr-4 sm:px-3 lg:p-0 justify-between">
-                            <p>Two items</p>
+                            <p>{productDetails.length} items</p>
                             <span>Edit cart</span>
                         </div>
                         <hr className="text-secondary "/>
-                        <div  className="flex flex-col gap-4">
-                            <div className="flex justify-start px-8 sm:px-3 lg:p-0 gap-3 lg:gap-6 ">
+                         <div  className="flex flex-col gap-4">
+                            {productDetails.map(item => (
+                                <div className="flex justify-between px-8 sm:px-3 lg:p-0 gap-3 lg:gap-6 w-full">
                                 <div className="flex justify-center items-center ">
                                     <img
-                                    src={cartItem[0].imgSrc}
+                                    src={item.image}
                                     className="w-[78px] h-[73px] lg:w-[129px] lg:h-[120px] rounded-2xl"
                                     />
                                 
                                 </div>
-                                <div className="flex lg:flex-row flex-col justify-center sm:justify-start lg:items-center  lg:gap-[85px]">
-                                    <span >{cartItem[0].name}</span>
-                                    <span className="flex items-center text-[18px]"><Image src={Currency}/> {cartItem[0].price.toLocaleString()}</span>
+                                <div className="flex lg:flex-row flex-col justify-center sm:justify-start lg:items-center lg:justify-between  lg:gap-[85px]">
+                                    <span >{item.name}</span>
+                                    <span className="flex items-center text-[18px]"><Image src={Currency}/> {item.current_price}</span>
                                 </div>
+                                <hr className="text-secondary "/>
                             </div>
-                            <hr className="text-secondary "/>
-                            <div className="flex justify-start px-8 sm:px-3 lg:p-0 gap-3 lg:gap-6 ">
-                                <div className="flex justify-center items-center ">
-                                    <img
-                                    src={cartItem[1].imgSrc}
-                                    className="w-[78px] h-[73px] lg:w-[129px] lg:h-[120px] rounded-2xl"
-                                    />
-                                
-                                </div>
-                                <div className="flex lg:flex-row flex-col justify-center sm:justify-start lg:items-center  lg:gap-[85px]">
-                                    <span >{cartItem[1].name}</span>
-                                    <span className="flex items-center text-[18px]"><Image src={Currency}/> {cartItem[1].price.toLocaleString()}</span>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
+                            
+                            
+                        </div> 
                     </div>
                
                 </aside>
