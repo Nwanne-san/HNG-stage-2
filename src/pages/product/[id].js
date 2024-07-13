@@ -6,7 +6,7 @@ import { Lato, Playfair_Display } from "next/font/google";
 import Currency from '../../../public/images/naira.svg';
 import { useCart } from '@/cartContext';
 import Link from 'next/link';
-import Left from '../../../public/images/left.svg'
+import Left from '../../../public/images/left.svg';
 import toast, { Toaster } from 'react-hot-toast';
 
 const lato = Lato({ subsets: ["latin"], weight: ['400', '300', '700'] });
@@ -34,7 +34,7 @@ const ProductDetail = ({ product }) => {
       <Toaster />
       <div className="flex sm:px-0 px-2 py-2 sm:py-10 items-center">
         <Link href='/' className="flex gap-2 sm:gap-6">
-          <Image src={Left} />
+          <Image src={Left} alt="Back" />
           <span className={`${lato.className} text-[18px] font-medium`}>Back to shop</span>
         </Link>
       </div>

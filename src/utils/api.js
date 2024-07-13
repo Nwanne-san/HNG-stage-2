@@ -9,17 +9,17 @@ const APPID = process.env.NEXT_PUBLIC_APPID;
 const API_KEY = process.env.NEXT_PUBLIC_APIKEY;
 
 const extractPrice = (current_price) => {
-    if (
-      current_price &&
-      current_price.length > 0 &&
-      current_price[0].NGN &&
-      current_price[0].NGN.length > 0
-    ) {
-      return current_price[0].NGN[0];
-    }
-    return "Price not available";
-  };
-  
+  if (
+    current_price &&
+    current_price.length > 0 &&
+    current_price[0].NGN &&
+    current_price[0].NGN.length > 0
+  ) {
+    return current_price[0].NGN[0];
+  }
+  return "Price not available";
+};
+
 export const fetchProducts = async (page = PAGE, size = SIZE) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/products`, {
@@ -37,13 +37,13 @@ export const fetchProducts = async (page = PAGE, size = SIZE) => {
     });
 
     const items = response.data.items.map((item) => ({
-        name: item.name,
-        price: extractPrice(item.current_price),
-        id: item.id,
-        image: `https://api.timbu.cloud/images/${
-          item.photos.length > 0 ? item.photos[0].url : ""
-        }`,
-      }));
+      name: item.name,
+      price: extractPrice(item.current_price),
+      id: item.id,
+      image: `https://api.timbu.cloud/images/${
+        item.photos.length > 0 ? item.photos[0].url : ""
+      }`,
+    }));
 
     return items;
   } catch (error) {
@@ -65,13 +65,13 @@ export const fetchProductById = async (productId) => {
       }
     });
     return {
-        ...response.data,
-        image: `https://api.timbu.cloud/images/${
-          response.data.photos.length > 0 ? response.data.photos[0].url : ""
-        }`,
-      };
-    } catch (error) {
-      console.error("Error fetching product:", error);
-      return null;
-    }
+      ...response.data,
+      image: `https://api.timbu.cloud/images/${
+        response.data.photos.length > 0 ? response.data.photos[0].url : ""
+      }`,
+    };
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null;
+  }
 };
