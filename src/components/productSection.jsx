@@ -56,13 +56,13 @@ const ProductSection = () => {
             <div key={product.id} className="flex flex-col items-center bg-beige w-full h-fit rounded-2xl ">
               <div className="relative">
                 <Image src={Like} className="absolute top-4 right-4 " alt="heart" />
-                
+                <Link href={`/product/${product.id}`}>
                   <img
                     src={product.image} // Adjust the default image path
                     alt={product.name}
                     className="object-cover w-[286px] h-[229px] rounded-t-2xl "
                   />
-                
+                </Link>
               </div>
               <div className="flex flex-col justify-center items-center gap-4 bg-white py-4 w-full px-2 rounded-b-2xl ">
                 <div className="flex flex-col justify-center items-center gap-1">
