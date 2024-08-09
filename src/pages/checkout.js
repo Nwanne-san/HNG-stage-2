@@ -100,7 +100,6 @@ const Checkout = () => {
                                     <p className="text-[18px] font-medium">Country:</p>
                                     <p className="text-[14px] font-normal">Nigeria</p>
                                 </div>
-                                
                             </div>
                             <div className="flex flex-col gap-4">
                                 <div className="flex flex-col gap-2">
@@ -120,12 +119,10 @@ const Checkout = () => {
                                     <p className="text-[14px] font-normal">7-14 business days</p>
                                 </div>
                             </div>
-                        
-                        
                     </div>
                     <div className="flex flex-col py-10 sm:px-0 px-[25px]  gap-4 justify-start">
                         <div className="flex sm:p-0 px-2 items-center justify-between">
-                            <h1 className={`${playfair.className}  text-pink text-[20px] font-medium`}>SHIPPING DETAILS </h1>
+                            <h1 className={`${playfair.className}  text-pink text-[20px] font-medium`}>PAYMENT DETAILS </h1>
                             <Image src={Down} alt='arrow-down' className=" sm:hidden block items-center"/>
                         </div>
                         <hr className="text-secondary "/>
@@ -201,7 +198,6 @@ const Checkout = () => {
                                     className="w-[78px] h-[73px] lg:w-[129px] lg:h-[120px] rounded-2xl"
                                     alt='product-image'
                                     />
-                                
                                 </div>
                                 <div className="flex lg:flex-row flex-col justify-center sm:justify-start lg:items-center lg:justify-between  lg:gap-[85px]">
                                     <span >{item.name}</span>
@@ -214,7 +210,6 @@ const Checkout = () => {
                             
                         </div> 
                     </div>
-               
                 </aside>
             </div>
             <div className="hidden sm:flex px-20 py-10 items-center ">

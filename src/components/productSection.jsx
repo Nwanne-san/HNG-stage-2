@@ -4,7 +4,7 @@ import Currency from '../../public/images/naira.svg';
 import Link from "next/link";
 import Image from "next/image";
 import Like from '../../public/images/like.svg';
-import { fetchProducts } from "@/utils/api"; // Adjust the import path as needed
+import { fetchProducts } from "@/utils/api"; 
 import { useCart } from "@/cartContext";
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -15,8 +15,8 @@ const ProductSection = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10; // Number of products per page on desktop
-  const productsPerPageMobile = 10; // Number of products per page on mobile
-  const { addToCart } = useCart(); // Destructure the addToCart function
+  const productsPerPageMobile = 10; 
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,7 +62,7 @@ const ProductSection = () => {
                 <Image src={Like} className="absolute top-4 right-4 " alt="heart" />
                 <Link href={`/product/${product.id}`}>
                   <img
-                    src={product.image} // Adjust the default image path
+                    src={product.image} 
                     alt={product.name}
                     className="object-cover w-[286px] h-[229px] rounded-t-2xl "
                   />
@@ -90,7 +90,7 @@ const ProductSection = () => {
                 <Image src={Like} className="absolute top-4 right-4 " alt="heart" />
                 <Link href={`/product/${product.id}`}>
                   <img
-                    src={product.image} // Adjust the default image path
+                    src={product.image} 
                     alt={product.name}
                     className="object-cover w-[286px] h-[229px] rounded-t-2xl "
                   />

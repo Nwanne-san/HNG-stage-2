@@ -15,7 +15,11 @@ const ProductDetail = ({ product }) => {
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    toast.success(`${product.name} added to cart!`);
+    toast.success(`${product.name} added to cart!`,{
+      position: 'top-right',
+      duration: 3000,
+      style: { backgroundColor: 'black', color: 'white' },
+    });
   };
 
   if (router.isFallback) {
@@ -27,9 +31,10 @@ const ProductDetail = ({ product }) => {
   }
 
   return (
+    <>
+    <Navbar/>
+    <Toaster />
     <div className="container mx-auto px-4 py-8">
-      <Navbar/>
-      <Toaster />
       <div className="flex sm:px-0 px-2 py-2 sm:py-10 items-center">
         <Link href='/'className="flex gap-2 sm:gap-6">
            
@@ -48,6 +53,7 @@ const ProductDetail = ({ product }) => {
           className="object-cover rounded-lg sm:w-[300px] sm:h-[300px] w-[200px] h-[200px]"
         />
         <p className="text-xl text-gray-700 mt-2 flex gap-2">
+          Price :
           <Image src={Currency} alt="currency" />
           {product.current_price.toString()}
         </p>
@@ -60,6 +66,7 @@ const ProductDetail = ({ product }) => {
         <p className="mt-4 text-gray-700">{product.description}</p>
       </div>
     </div>
+    </>
   );
 };
 

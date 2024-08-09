@@ -7,11 +7,9 @@ import MobileLogo from '../../public/images/mobile-logo.svg'
 import { useCart } from '@/cartContext';
 import { Lato } from "next/font/google";
 
-
 const lato = Lato({ subsets: ["latin"], weight: ['400', '300', '700'] });
 
 export default function Navbar()  {
-
     const { cartItems } = useCart();
     return (
         <>

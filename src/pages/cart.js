@@ -1,4 +1,3 @@
-// cart.js
 import React, { useState, useEffect } from "react";
 import Currency from '../../public/images/naira.svg';
 import Image from "next/image";
@@ -12,6 +11,7 @@ import MobileCart from '../../public/images/mobile-cart.svg';
 import MobileLogo from '../../public/images/mobile-logo.svg';
 import { fetchProductById } from "@/utils/api";
 import { useCart } from "@/cartContext";
+import toast, {Toaster} from "react-hot-toast";
 
 const lato = Lato({ subsets: ["latin"], weight: ['400', '300', '700'] });
 const playfair = Playfair_Display({ subsets: ['latin'] });
@@ -39,6 +39,15 @@ const CartPage = () => {
       query: { products: productIds },
     });
   };
+
+  const handleRemoveFromCart = (productId, productName) => {
+    removeFromCart(productId);
+    toast.error(`${productName} removed from cart`, {
+      position: 'top-right',
+      duration: 3000,
+      style: { backgroundColor: 'black', color: 'white' },
+    });
+  };
   
 
   const calculateSubtotal = () => {
@@ -57,6 +66,7 @@ const CartPage = () => {
 
   return (
     <>
+    <Toaster/>
       <div className='w-full bg-[#F5F5F5] flex justify-between items-center px-8 py-[18px]'>
         <div>
           <Link href='/'>
@@ -81,7 +91,7 @@ const CartPage = () => {
                 <div key={product.id} className="flex lg:flex-row flex-col items-center sm:items-start gap-6 sm:gap-8">
                   <img
                     src={product.image}
-                    className="object-cover w-[244px] h-[199px] lg:w-[447px] lg:h-[363px] rounded-2xl"
+                    className="object-cover w-[204px] border shadow-md border-secondary h-[160px] lg:w-[400px] lg:h-[320px] rounded-2xl"
                   />
                   <div className="flex flex-col gap-4 sm:gap-6 sm:items-start items-center">
                     <div className={`flex gap-4 sm:gap-6 sm:items-start items-center flex-col`}>
@@ -114,37 +124,13 @@ const CartPage = () => {
                     </div>
                     <div className="flex justify-start">
                       <button className={`px-[19px] py-[17.5px] sm:px-[18.5px] sm:py-2 border font-bold sm:font-normal border-secondary rounded-xl hover:text-white text-2xl sm:text-base hover:bg-secondary duration-200 ${lato.className}`}
-                        onClick={() => removeFromCart(product.id)}>Remove from cart
+                        onClick={() => handleRemoveFromCart(product.id, product.name)}>Remove from cart
                       </button>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-            {/* <div className="flex flex-col px-11 py-7 lg:py-14 gap-20 rounded-3xl sm:bg-[#FFFFFF] h-fit mn-w-[33%]">
-              <div className={`flex flex-col gap-4`}>
-                <h2 className={`${playfair.className} text-pink text-2xl font-bold`}>Order Summary</h2>
-                <div className="flex gap-2 items-center">
-                  <p className={`${lato.className} text-xl`}>Items: </p>
-                  <p className={`${lato.className} flex gap-3`}>
-                    <Image src={Currency} alt='Naira' />
-                    {calculateSubtotal()}
-                  </p>
-                </div>
-                <div className="flex gap-2 items-center">
-                  <p className={`${lato.className} text-xl`}>Subtotal: </p>
-                  <p className={`${lato.className} flex gap-3`}>
-                    <Image src={Currency} alt='Naira' />
-                    {calculateSubtotal()}
-                  </p>
-                </div>
-              </div>
-              <div className={`${lato.className}`}>
-                <button onClick={handleCheckout} className="py-3 px-[15px] text-neutral bg-pink rounded-xl">
-                    Proceed to Checkout
-                  </button>
-              </div>
-            </div> */}
             <div className={`${lato.className} flex flex-col h-full w-full sm:rounded-3xl gap-12 bg-[#FFFFFF] sm:px-8 py-6 sm:py-10 text-center sm:text-start`}>
               <div className="flex flex-col gap-[48px]">
                 <div className="flex flex-col gap-4">
