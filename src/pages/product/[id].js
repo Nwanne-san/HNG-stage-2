@@ -4,6 +4,7 @@ import { fetchProductById } from '@/utils/api'; // Adjust the import path as nee
 import Image from 'next/image';
 import Currency from '../../../public/images/naira.svg';
 import { useCart } from '@/cartContext';
+import Navbar from '@/components/Navbar';
 import Link from 'next/link';
 import Left from '../../../public/images/left.svg';
 import toast, { Toaster } from 'react-hot-toast';
@@ -27,6 +28,7 @@ const ProductDetail = ({ product }) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Navbar/>
       <Toaster />
       <div className="flex sm:px-0 px-2 py-2 sm:py-10 items-center">
         <Link href='/'className="flex gap-2 sm:gap-6">

@@ -44,12 +44,16 @@ const ProductSection = () => {
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    toast.success(`${product.name} added to cart!`);
+    toast.success(`${product.name} added to cart!`,{
+      position: 'top-right', 
+      duration: 3000,
+      style: { backgroundColor: 'black', color: 'white' },
+    });
   };
 
   return (
     <div className="w-full">
-      <Toaster />
+      <Toaster  />
       <div className="flex flex-row justify-around w-full gap-[104px] px-4 sm:px-8 py-[4em] ">
         <div className="hidden sm:grid justify-center lg:grid-cols-4 sm:grid-cols-3 gap-8">
           {currentProducts.map((product) => (

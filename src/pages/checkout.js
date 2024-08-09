@@ -20,7 +20,7 @@ const playfair = Playfair_Display({ subsets: ['latin'] });
 
 const Checkout = () => {
 
-    const { cartItems } = useCart(); // Assuming cartItems are provided by a context
+    const { cartItems } = useCart(); 
 
   const [productDetails, setProductDetails] = useState([]);
 
@@ -54,13 +54,13 @@ const Checkout = () => {
                   <Link href='/cart' >
                     <Image src={Cart} alt="cart logo" className="w-10 h-10 hidden sm:block"/>
                     <Image src={MobileCart} alt="mobile-cart-logo" className=" sm:hidden block"/>
-                    <span className={`${lato.className} absolute top-[-2px] sm:top-[-4px] right-[-8px] sm:right-[-12px] flex justify-center text-[10px] sm:text-base items-center px-[6px] py-[2px] sm:px-[8.5px] sm:py-[1.5px] rounded-xl text-neutral bg-secondary `}>2</span>
+                    <span className={`${lato.className} absolute top-[-2px] sm:top-[-4px] right-[-8px] sm:right-[-12px] flex justify-center text-[10px] sm:text-base items-center px-[6px] py-[2px] sm:px-[8.5px] sm:py-[1.5px] rounded-xl text-neutral bg-secondary `}>{cartItems.length}</span>
                   </Link>
                 </div>
         </div>
         <div className="flex flex-col gap-16 bg-[#F5F5F5]">
             <div className="flex flex-col gap-1">
-                <h1 className={`flex justify-center text-2xl font-bold mb-4 ${playfair.className}`}>YOUR CART</h1>
+                <h1 className={`flex justify-center text-2xl font-bold mb-4 ${playfair.className}`}>CHECKOUT</h1>
                 <div className={`${lato.className} flex gap-[10px] justify-center items-center`}>
                     <span className="text-[#333333]/60">Cart</span>
                     <span><Image src={Right} alt="arrow-right"/></span>
@@ -74,7 +74,7 @@ const Checkout = () => {
                     <div className="flex flex-col sm:px-0 px-[25px] sm:pt-4 lg:pt-10  gap-4 justify-start">
                         <div className="flex sm:p-0 px-2 items-center justify-between">
                             <h1 className={`${playfair.className}  text-pink text-[20px] font-medium`}>SHIPPING DETAILS </h1>
-                            <Image src={Down} className=" sm:hidden block items-center"/>
+                            <Image src={Down} alt='arrow-down' className=" sm:hidden block items-center"/>   
                         </div>
                         <hr className="text-secondary "/>
                     </div>
@@ -126,7 +126,7 @@ const Checkout = () => {
                     <div className="flex flex-col py-10 sm:px-0 px-[25px]  gap-4 justify-start">
                         <div className="flex sm:p-0 px-2 items-center justify-between">
                             <h1 className={`${playfair.className}  text-pink text-[20px] font-medium`}>SHIPPING DETAILS </h1>
-                            <Image src={Down} className=" sm:hidden block items-center"/>
+                            <Image src={Down} alt='arrow-down' className=" sm:hidden block items-center"/>
                         </div>
                         <hr className="text-secondary "/>
                     </div>
@@ -136,7 +136,7 @@ const Checkout = () => {
                                 <label className="text-[#333333]/60">Name on card</label>
                                 <input
                                 type="text"
-                                value='JESSICA OMOLADE' 
+                                placeholder='JESSICA OMOLADE' 
                                 
                                 className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md"
                                 />
@@ -145,7 +145,7 @@ const Checkout = () => {
                                 <label className="text-[#333333]/60">Card number</label>
                                 <input
                                 type="text"
-                                value='4101 2589 0925 8861' 
+                                placeholder='4101 2589 0925 8861' 
                                 className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md"
                                 />
                             </div>
@@ -154,7 +154,7 @@ const Checkout = () => {
                                     <label className="text-[#333333]/60">Expiration Date</label>
                                     <input
                                     type="text"
-                                    value='12/25'
+                                    placeholder='12/25'
                                     className="px-3 py-[9.5px] flex w-full justify-start border text-gray border-[#D0D5DD] rounded-md"
                                     />
                                 </div>
@@ -162,7 +162,7 @@ const Checkout = () => {
                                     <label className="text-[#333333]/60">CVV</label>
                                     <input
                                     type="text"
-                                    value='025'
+                                    placeholder='025'
                                     
                                     className="px-3 py-[9.5px] flex justify-start w-full border text-gray border-[#D0D5DD] rounded-md"
                                     />
@@ -199,12 +199,13 @@ const Checkout = () => {
                                     <img
                                     src={item.image}
                                     className="w-[78px] h-[73px] lg:w-[129px] lg:h-[120px] rounded-2xl"
+                                    alt='product-image'
                                     />
                                 
                                 </div>
                                 <div className="flex lg:flex-row flex-col justify-center sm:justify-start lg:items-center lg:justify-between  lg:gap-[85px]">
                                     <span >{item.name}</span>
-                                    <span className="flex items-center text-[18px]"><Image src={Currency}/> {item.current_price}</span>
+                                    <span className="flex items-center text-[18px]"><Image src={Currency} alt='Naira'/> {(item.current_price * item.quantity)  }</span>
                                 </div>
                                 <hr className="text-secondary "/>
                             </div>
@@ -218,7 +219,7 @@ const Checkout = () => {
             </div>
             <div className="hidden sm:flex px-20 py-10 items-center ">
                 <Link href='/' className="sm:flex gap-6">
-                    <Image src={Left} />
+                    <Image src={Left} alt='arrow-left' />
                     <span className={`${lato.className} text-[18px] font-medium `}>Back to shop</span>
                 </Link>
             </div>
