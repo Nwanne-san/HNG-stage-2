@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { fetchProductById } from '@/utils/api'; // Adjust the import path as needed
+import { fetchProductById } from '@/utils/api';
 import Image from 'next/image';
 import Currency from '../../../public/images/naira.svg';
 import { useCart } from '@/cartContext';

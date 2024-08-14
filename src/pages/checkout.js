@@ -2,7 +2,7 @@ import { Lato, Playfair_Display } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from '../../public/images/Logo.svg'
-import Cart from '../../public/images/cart.svg'
+import Cart from '../../public/images/cart.svg';
 import Footer from "@/components/Footer";
 import Currency from '../../public/images/naira.svg';
 import Note from '../../public/images/note.svg'
@@ -21,8 +21,21 @@ const playfair = Playfair_Display({ subsets: ['latin'] });
 const Checkout = () => {
 
     const { cartItems } = useCart(); 
-
-  const [productDetails, setProductDetails] = useState([]);
+    const [productDetails, setProductDetails] = useState([]);
+    const [file, setFile] = useState(null);
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      if (
+        selectedFile.type === "application/pdf" ||
+        selectedFile.type.startsWith("image/")
+      ) {
+        setFile(selectedFile);
+      } else {
+        alert("Please upload either an image file or a PDF.");
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -47,7 +60,7 @@ const Checkout = () => {
   };
     
     return(
-        <>
+    <>
         <div className='w-full bg-[#F5F5F5] flex justify-end items-center px-8 py-[18px]'>
             
         <div className="relative">
@@ -58,7 +71,7 @@ const Checkout = () => {
                   </Link>
                 </div>
         </div>
-        <div className="flex flex-col gap-16 bg-[#F5F5F5]">
+        <div className="flex flex-col gap-10 bg-[#F5F5F5]">
             <div className="flex flex-col gap-1">
                 <h1 className={`flex justify-center text-2xl font-bold mb-4 ${playfair.className}`}>CHECKOUT</h1>
                 <div className={`${lato.className} flex gap-[10px] justify-center items-center`}>
@@ -73,46 +86,28 @@ const Checkout = () => {
                 <div className="flex flex-col sm:px-4 lg:pl-12 lg:pr-20 sm:pb-10 rounded-3xl sm:bg-white">
                     <div className="flex flex-col sm:px-0 px-[25px] sm:pt-4 lg:pt-10  gap-4 justify-start">
                         <div className="flex sm:p-0 px-2 items-center justify-between">
-                            <h1 className={`${playfair.className}  text-pink text-[20px] font-medium`}>SHIPPING DETAILS </h1>
+                            <h1 className={`${playfair.className}  text-pink text-[20px] font-medium`}>ACCOUNT DETAILS </h1>
                             <Image src={Down} alt='arrow-down' className=" sm:hidden block items-center"/>   
                         </div>
                         <hr className="text-secondary "/>
                     </div>
                     <div className={`${lato.className} flex flex-col sm:grid sm:grid-cols-2 sm:px-0 px-[25px] gap-4 sm:gap-[40px] lg:gap-[120px] pt-6 text-gray`}>
                             <div className="flex flex-col gap-4">
+                                
                                 <div className="flex flex-col gap-2">
-                                    <p className="text-[18px] font-medium">Recipient's Name:</p>
-                                    <p className="text-[14px] font-normal">Jessica Omolade</p>
+                                    <p className="text-[18px] font-medium">Account Adress:</p>
+                                    <p className="text-[14px] font-normal">1444367108</p>
                                 </div>
                                 <div className="flex flex-col gap-2">
-                                    <p className="text-[18px] font-medium">Address Line:</p>
-                                    <p className="text-[14px] font-normal">12 Adetokunbo Ademola Street</p>
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <p className="text-[18px] font-medium">City/State:</p>
-                                    <p className="text-[14px] font-normal">Lagos</p>
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <p className="text-[18px] font-medium">Postal Code:</p>
-                                    <p className="text-[14px] font-normal">101241</p>
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <p className="text-[18px] font-medium">Country:</p>
-                                    <p className="text-[14px] font-normal">Nigeria</p>
+                                    <p className="text-[18px] font-medium">Account Name:</p>
+                                    <p className="text-[14px] font-normal">Belle's Jewellry</p>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-4">
+                                
                                 <div className="flex flex-col gap-2">
-                                    <p className="text-[18px] font-medium">Phone Number:</p>
-                                    <p className="text-[14px] font-normal">+234 810 123 4567</p>
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <p className="text-[18px] font-medium">Email:</p>
-                                    <p className="text-[14px] font-normal">jessica.omolade@gmail.com</p>
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <p className="text-[18px] font-medium">Shipping Method:</p>
-                                    <p className="text-[14px] font-normal">Standard International Shipping</p>
+                                    <p className="text-[18px] font-medium">Bank Name:</p>
+                                    <p className="text-[14px] font-normal">Access Bank PLC</p>
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <p className="text-[18px] font-medium">Estimated Delivery Time:</p>
@@ -130,40 +125,81 @@ const Checkout = () => {
                     <div className={`${lato.className} flex flex-col w-full  gap-14 sm:gap-12`}>
                         <div className="flex flex-col gap-3 sm:px-0 px-[25px]">
                             <div className="flex flex-col gap-2">
-                                <label className="text-[#333333]/60">Name on card</label>
+                                <label className="text-[#333333]">Full Name</label>
                                 <input
                                 type="text"
                                 placeholder='JESSICA OMOLADE' 
                                 
-                                className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md"
+                                className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md focus:border-secondary focus:outline-secondary focus:shadow-md transition-shadow duration-200"
                                 />
                             </div>
                             <div className="flex flex-col gap-2">
-                                <label className="text-[#333333]/60">Card number</label>
+                                <label className="text-[#333333]">Phone Number</label>
                                 <input
                                 type="text"
-                                placeholder='4101 2589 0925 8861' 
-                                className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md"
+                                placeholder='+234-000-000-0000' 
+                                
+                                className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md focus:border-secondary focus:outline-secondary focus:shadow-md transition-shadow duration-200"
                                 />
                             </div>
                             <div className="flex gap-4 w-full justify-between">
                                 <div className="flex flex-col gap-2 w-[70%] sm:w-full">
-                                    <label className="text-[#333333]/60">Expiration Date</label>
+                                    <label className="text-[#333333]">State</label>
                                     <input
                                     type="text"
-                                    placeholder='12/25'
-                                    className="px-3 py-[9.5px] flex w-full justify-start border text-gray border-[#D0D5DD] rounded-md"
+                                    placeholder='Lagos'
+                                    className="px-3 py-[9.5px] flex w-full justify-start border text-gray border-[#D0D5DD] rounded-md focus:border-secondary focus:outline-secondary focus:shadow-md transition-shadow duration-200"
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 sm:w-full">
-                                    <label className="text-[#333333]/60">CVV</label>
+                                    <label className="text-[#333333]">City</label>
                                     <input
                                     type="text"
-                                    placeholder='025'
+                                    placeholder='Surulere'
                                     
-                                    className="px-3 py-[9.5px] flex justify-start w-full border text-gray border-[#D0D5DD] rounded-md"
+                                    className="px-3 py-[9.5px] flex justify-start w-full border text-gray border-[#D0D5DD] rounded-md focus:border-secondary focus:outline-secondary focus:shadow-md transition-shadow duration-200"
                                     />
                                 </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="text-[#333333]">Address</label>
+                                <input
+                                type="text"
+                                placeholder='' 
+                                
+                                className="px-3 py-[9.5px] flex justify-start border text-gray border-[#D0D5DD] rounded-md focus:border-secondary focus:outline-secondary focus:shadow-md transition-shadow duration-200"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                htmlFor="file-upload"
+                                className="cursor-pointer block "
+                                > Upload Proof of Payment
+                                <div className="px-3 py-[9.5px] h-[60px] flex justify-start border bg-gray/5 text-gray border-[#D0D5DD] rounded-md focus:border-secondary focus:outline-secondary focus:shadow-md transition-shadow duration-200">
+                                    <div className="flex">
+                                    {/* <div className="text-gray-b ">
+                                        <AddCircleOutline className="text-2xl" />
+                                    </div> */}
+                                    <div className=" ">
+                                        {file && (
+                                        <p className="text-gray-700  overflow-hidden overflow-ellipsis whitespace-nowrap p-1">
+                                            {file.name}
+                                        </p>
+                                        )}
+                                    </div>{" "}
+                                    </div>
+                                    <p className="text-sm text-gray-500">
+                                    Choose File
+                                    </p>
+                                </div>
+                                </label>
+                                <input
+                                id="file-upload"
+                                type="file"
+                                accept="image/*,.pdf"
+                                className="hidden"
+                                onChange={handleFileChange}
+                                />
                             </div>
                             <div className="flex gap-2 items-center pb-14 sm:p-0">
                                 <input
@@ -206,8 +242,6 @@ const Checkout = () => {
                                 <hr className="text-secondary "/>
                             </div>
                         ))}
-                            
-                            
                         </div> 
                     </div>
                 </aside>
@@ -219,6 +253,7 @@ const Checkout = () => {
                 </Link>
             </div>
         </div>
+        <Footer/>
         </>
     )
 };

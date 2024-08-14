@@ -123,7 +123,7 @@ const CartPage = () => {
                       </div>
                     </div>
                     <div className="flex justify-start">
-                      <button className={`px-[19px] py-[17.5px] sm:px-[18.5px] sm:py-2 border font-bold sm:font-normal border-secondary rounded-xl hover:text-white text-2xl sm:text-base hover:bg-secondary duration-200 ${lato.className}`}
+                      <button className={`px-[19px] py-[17.5px] sm:px-[18.5px] sm:py-2 border font-bold sm:font-normal border-red-600 rounded-xl hover:text-white text-2xl sm:text-base hover:bg-red-600 duration-200 ${lato.className}`}
                         onClick={() => handleRemoveFromCart(product.id, product.name)}>Remove from cart
                       </button>
                     </div>
